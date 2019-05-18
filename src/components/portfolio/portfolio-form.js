@@ -19,7 +19,7 @@ export default class PortfolioForm extends Component {
       banner_image: "",
       logo: "",
       editMode: false,
-      apiUrl: "https://jordan.devcamp.space/portfolio/portfolio_items",
+      apiUrl: "https://wubbalubbadubbdubb.devcamp.space/portfolio/portfolio_items",
       apiAction: "post"
     };
 
@@ -38,7 +38,20 @@ export default class PortfolioForm extends Component {
   }
 
   deleteImage(imageType) {
-    console.log("deleteImage", imageType);
+    axios
+      .delete(
+        `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state
+          .id}?image_type=${imageType}`,
+        { withCredentials: true}
+        )
+        .then(response => {
+          this.setState({
+            [`${imageType}_url`]: ""
+          });
+        })
+        .catch(error => {
+      console.log("deleteImage error", error);
+    });
   }
 
   componentDidUpdate() {

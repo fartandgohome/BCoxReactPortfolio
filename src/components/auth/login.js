@@ -6,9 +6,9 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
-      errorText: ""
+      email: "fartandgohome@gmail.com",
+      password: "6d87b42e74",
+      errorText: "INCORRECT LOGIN"
     };
 
     this.handleChange = this.handleChange.bind(this);
